@@ -157,6 +157,20 @@
         .iconedit:hover {
             background-color: lightblue;
         }
+        .save{
+            background-color: navy;
+            color: #fff;
+            padding: 10px 20px;
+            margin-top: 30px;
+        }
+        .support-content {
+            display: none; /* Hide support content by default */
+            text-align: center;
+            margin-top: 30px;
+        }
+        .active-support {
+            display: block; /* Show support content when active */
+        }
     </style>
 </head>
 <body>
@@ -178,7 +192,7 @@
                         <th>Payment Status</th>
                         <th>Date</th>
                         <th>Download Link</th>
-                       <th> License Key </th>
+                        <th> License Key </th>
                         <th>Refund Status</th>
                         <th>Action</th>
                     </tr>
@@ -189,7 +203,7 @@
                         <td>Musa 1</td>
                         <td>Paid</td>
                         <td class="price" data-price="100.00">2024-09-26 12:40:30 N/A</td>
-                    <td>https://www.lipsum.com/ </td>
+                        <td>https://www.lipsum.com/</td>
                         <td>N/A</td>
                         <td class="total-price">None</td>
                         <td>
@@ -201,8 +215,7 @@
                         <td>Musa 2</td>
                         <td>Paid</td>
                         <td class="price" data-price="100.00">2024-09-26 12:40:30 N/A</td>
-                        <td>https://www.lipsum.com/ </td>
-                  
+                        <td>https://www.lipsum.com/</td>
                         <td>N/A</td>
                         <td class="total-price">None</td>
                         <td>
@@ -214,8 +227,7 @@
                         <td>Musa 3</td>
                         <td>Paid</td>
                         <td class="price" data-price="100.00">2024-09-26 12:40:30 N/A</td>
-                        <td>https://www.lipsum.com/ </td>
-                  
+                        <td>https://www.lipsum.com/</td>
                         <td>N/A</td>
                         <td class="total-price">None</td>
                         <td>
@@ -227,19 +239,15 @@
                         <td>Musa 4</td>
                         <td>Paid</td>
                         <td class="price" data-price="100.00">2024-09-26 12:40:30 N/A</td>
-                        <td>https://www.lipsum.com/ </td>
-                  
+                        <td>https://www.lipsum.com/</td>
                         <td>N/A</td>
                         <td class="total-price">None</td>
                         <td>
                             <button type="button" class="remove-button">Request fund</button>
-                      
                         </td>
-                      
                     </tr>
-                    
                 </tbody>
-               </table>
+            </table>
         </div>
 
         <!-- Enhanced Read-only account details -->
@@ -248,58 +256,101 @@
             <div class="input-flex">
                 <label for="name">Name:</label>
                 <input type="text" id="name" value="Salmi" readonly>
-                <div class="iconedit" title="Edit"><i class='bx bx-edit'></i></div>
+                <div class="iconedit">
+                    <i class='bx bx-edit' style="color: navy;"></i>
+                </div>
             </div>
             <div class="input-flex">
                 <label for="email">Email:</label>
-                <input type="text" id="email" value="salmi@example.com" readonly>
-                <div class="iconedit" title="Edit"><i class='bx bx-edit'></i></div>
+                <input type="email" id="email" value="sahil@example.com" readonly>
+                <div class="iconedit">
+                    <i class='bx bx-edit' style="color: navy;"></i>
+                </div>
             </div>
             <div class="input-flex">
                 <label for="phone">Phone:</label>
-                <input type="text" id="phone" value="(123) 456-7890" readonly>
-                <div class="iconedit" title="Edit"><i class='bx bx-edit'></i></div>
+                <input type="tel" id="phone" value="1234567890" readonly>
+                <div class="iconedit">
+                    <i class='bx bx-edit' style="color: navy;"></i>
+                </div>
             </div>
-            <button class="save">Save changes</button>
-              
+            <button class="save">Save Changes</button>
         </div>
-   
+       <style>
+        .support-flex{
+            display: flex;
+            justify-content: space-between;
+ text-align: left;
+ gap: 100px;
+        }
+        .leftside{
+        flex: 1;
+        padding: 16px;
+ 
+    }
+    .rightside{
+        flex: 1;
+        padding: 16px;
+ 
+    }
+        .detail-heading{
+            text-align: left;
+        }
+       </style> 
+        <!-- Support Content -->
+        <div class="support-content" id="support-content">
+            <h2>Support Related to a purchased item</h2>
+            <p>for support related to the purchase item,please Contact the developer/designer directly by leaving messege in the support section on the page of the item you have purchased</p>
+    <div class="support-flex">
+        <div class="leftside">
+            <h2 class="detail-heading">Postal Address</h2>
+            <p>Riftzilla</p>
+            <p>soniq internet media</p>
+           <p>Saleh</p>
+            <p>2596Ap</p>
+            <p>The hauge</p>
+            <p>the netherlend</p>
+        </div>
+        <div class="rightside">
+            <h2 class="detail-heading">Postal Address</h2>
+            <p>Riftzilla</p>
+            <p>soniq internet media</p>
+           <p>Saleh</p>
+            <p>2596Ap</p>
+            <p>The hauge</p>
+            <p>the netherlend</p>
+        </div>
+    
+    </div>
+        </div>
     </div>
 
-    <!-- Custom JavaScript -->
     <script>
-        function setActiveTab(button, section) {
-            // Remove active class from all buttons
-            document.querySelectorAll('.flex-tabs button').forEach(btn => {
+        function setActiveTab(button, tab) {
+            const buttons = document.querySelectorAll('.flex-tabs button');
+            buttons.forEach(btn => {
                 btn.classList.remove('active');
             });
-
-            // Add active class to the clicked button
             button.classList.add('active');
 
-            // Hide all sections
-            document.getElementById('cart-section').style.display = 'none';
-            document.getElementById('account-detail').style.display = 'none';
+            const accountDetail = document.getElementById('account-detail');
+            const cartSection = document.getElementById('cart-section');
+            const supportContent = document.getElementById('support-content');
 
-            // Show the selected section
-            if (section === 'orders') {
-                document.getElementById('cart-section').style.display = 'block';
-            } else if (section === 'profile') {
-                document.getElementById('account-detail').style.display = 'block';
-            } else {
-                alert("Support section is coming soon!");
+            // Hide all sections
+            accountDetail.classList.remove('active-account');
+            cartSection.style.display = 'none';
+            supportContent.classList.remove('active-support');
+
+            // Show the appropriate section based on the active tab
+            if (tab === 'orders') {
+                cartSection.style.display = 'block';
+            } else if (tab === 'profile') {
+                accountDetail.classList.add('active-account');
+            } else if (tab === 'support') {
+                supportContent.classList.add('active-support');
             }
         }
-
-        // Initialize the UI to show the orders section
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('cart-section').style.display = 'block';
-        });
-
-
     </script>
 </body>
 </html>
-<script>
-    
-</script>
