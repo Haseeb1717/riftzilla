@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart UI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.1/css/boxicons.min.css">
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f0f4f8;
+            color: #333;
+            font-family: "Montserrat", sans-serif;
+        }
+        .table-container {
+            max-width: 1300px;
+            margin: 20px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-align: center;
+            animation: text-writing 2s forwards;
+            overflow: hidden; /* Ensures text is clipped */
+            white-space: nowrap; /* Keeps text in a single line */
+            width: 0; /* Initial width */
+        }
+        @keyframes text-writing {
+            to {
+                width: 100%; /* Final width */
+            }
+        }
+        h2 {
+            text-align: center;
+            color: navy;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: navy;
+            color: #fff;
+            position: sticky; /* Sticky header */
+            top: 0; /* Stick to the top */
+            z-index: 1; /* Ensure it is above other content */
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Alternating row colors */
+        }
+        tr:hover {
+            background-color: navy; /* Row hover effect */
+            color: #fff;
+        }
+        .remove-button {
+            background-color: navy;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .remove-button:hover {
+            background-color: darkred;
+        }
+        .flex-tabs {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            justify-content: center; /* Center the tabs */
+            margin-bottom: 20px; /* Space between tabs and table */
+        }
+        .flex-tabs button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: lightgray; /* Default background */
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .flex-tabs button.active {
+            background-color: navy; /* Active tab color */
+            color: #fff; /* Active tab text color */
+        }
+        @media (max-width: 768px) {
+            .table-container {
+                padding: 10px;
+            }
+            table {
+                font-size: 14px;
+            }
+            .flex-tabs button {
+                display: block;
+                margin: 10px auto;
+            }
+        }
+        @media (max-width: 480px) {
+            table {
+                font-size: 12px;
+            }
+            th, td {
+                padding: 8px;
+            }
+        }
+        .account-detail {
+            display: none; /* Hide account detail by default */
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .active-account {
+            display: block; /* Show account detail when active */
+        }
+        .input-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Space between items */
+            gap: 30px;
+            margin-bottom: 15px; /* Space between fields */
+        }
+        .input-flex input {
+            flex: 1;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .iconedit {
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            background-color: white;
+            transition: background-color 0.3s;
+        }
+        .iconedit:hover {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>WELCOME SAHIL</h1>
+    <div class="table-container">
+        <div class="flex-tabs">
+            <button class="orderbtn active" onclick="setActiveTab(this, 'orders')">Orders</button>
+            <button class="Profilebtn" onclick="setActiveTab(this, 'profile')">Profile</button>
+            <button class="Supportpage" onclick="setActiveTab(this, 'support')">Support</button>
+        </div>
+    
+        <div id="cart-section">
+            <h2>YOUR ORDERS</h2>
+            <table id="cart-table">
+                <thead>
+                    <tr>
+                        <th>Order Id</th>
+                        <th>Product Name</th>
+                        <th>Payment Status</th>
+                        <th>Date</th>
+                        <th>Download Link</th>
+                       <th> License Key </th>
+                        <th>Refund Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Musa 1</td>
+                        <td>Paid</td>
+                        <td class="price" data-price="100.00">2024-09-26 12:40:30 N/A</td>
+                    <td>https://www.lipsum.com/ </td>
+                        <td>N/A</td>
+                        <td class="total-price">None</td>
+                        <td>
+                            <button type="button" class="remove-button">Request fund</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Musa 2</td>
+                        <td>Paid</td>
+                        <td class="price" data-price="100.00">2024-09-26 12:40:30 N/A</td>
+                        <td>https://www.lipsum.com/ </td>
+                  
+                        <td>N/A</td>
+                        <td class="total-price">None</td>
+                        <td>
+                            <button type="button" class="remove-button">Request fund</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Musa 3</td>
+                        <td>Paid</td>
+                        <td class="price" data-price="100.00">2024-09-26 12:40:30 N/A</td>
+                        <td>https://www.lipsum.com/ </td>
+                  
+                        <td>N/A</td>
+                        <td class="total-price">None</td>
+                        <td>
+                            <button type="button" class="remove-button">Request fund</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Musa 4</td>
+                        <td>Paid</td>
+                        <td class="price" data-price="100.00">2024-09-26 12:40:30 N/A</td>
+                        <td>https://www.lipsum.com/ </td>
+                  
+                        <td>N/A</td>
+                        <td class="total-price">None</td>
+                        <td>
+                            <button type="button" class="remove-button">Request fund</button>
+                      
+                        </td>
+                      
+                    </tr>
+                    
+                </tbody>
+               </table>
+        </div>
+
+        <!-- Enhanced Read-only account details -->
+        <div class="account-detail" id="account-detail">
+            <h2>Your Account Details</h2>
+            <div class="input-flex">
+                <label for="name">Name:</label>
+                <input type="text" id="name" value="Salmi" readonly>
+                <div class="iconedit" title="Edit"><i class='bx bx-edit'></i></div>
+            </div>
+            <div class="input-flex">
+                <label for="email">Email:</label>
+                <input type="text" id="email" value="salmi@example.com" readonly>
+                <div class="iconedit" title="Edit"><i class='bx bx-edit'></i></div>
+            </div>
+            <div class="input-flex">
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" value="(123) 456-7890" readonly>
+                <div class="iconedit" title="Edit"><i class='bx bx-edit'></i></div>
+            </div>
+            <button class="save">Save changes</button>
+              
+        </div>
+   
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script>
+        function setActiveTab(button, section) {
+            // Remove active class from all buttons
+            document.querySelectorAll('.flex-tabs button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Add active class to the clicked button
+            button.classList.add('active');
+
+            // Hide all sections
+            document.getElementById('cart-section').style.display = 'none';
+            document.getElementById('account-detail').style.display = 'none';
+
+            // Show the selected section
+            if (section === 'orders') {
+                document.getElementById('cart-section').style.display = 'block';
+            } else if (section === 'profile') {
+                document.getElementById('account-detail').style.display = 'block';
+            } else {
+                alert("Support section is coming soon!");
+            }
+        }
+
+        // Initialize the UI to show the orders section
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('cart-section').style.display = 'block';
+        });
+
+
+    </script>
+</body>
+</html>
+<script>
+    
+</script>
