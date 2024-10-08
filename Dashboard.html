@@ -257,33 +257,7 @@
             display: block; /* Show support content when active */
         }
 
-        .support-flex {
-            display: flex;
-            justify-content: space-between;
-            text-align: left;
-           align-items: center;
-        gap: 10px;
-        }
 
-        .leftside {
-            flex: 1;
-            padding: 16px;
-        }
-
-        .rightside {
-            flex: 1;
-            padding: 16px;
-        }
-
-        .detail-heading {
-            text-align: left;
-        }
-@media(max-width:764px){
-    .support-flex{
-        flex-direction: column;
-        margin: 0 auto;
-    }
-}
     </style>
 </head>
 <body>
@@ -393,51 +367,95 @@
         <div class="support-content" id="support-content">
             <h2>Support Related to a purchased item</h2>
             <p>for support related to the purchase item,please Contact the developer/designer directly by leaving messege in the support section on the page of the item you have purchased</p>
-    <div class="support-flex">
-        <div class="leftside">
-            <h2 class="detail-heading">Postal Address</h2>
-            <p>Riftzilla</p>
-            <p>soniq internet media</p>
-           <p>Saleh</p>
-            <p>2596Ap</p>
-            <p>The hauge</p>
-            <p>the netherlend</p>
-        </div>
-        <div class="rightside">
-            <h2 class="detail-heading">Postal Address</h2>
-            <p>Riftzilla</p>
-            <p>soniq internet media</p>
-           <p>Saleh</p>
-            <p>2596Ap</p>
-            <p>The hauge</p>
-            <p>the netherlend</p>
-        </div>
-    
-    </div>
-    <div class="support-flex">
-        <div class="leftside">
-            <h2 class="detail-heading">Postal Address</h2>
-            <p>Riftzilla</p>
-            <p>soniq internet media</p>
-           <p>Saleh</p>
-            <p>2596Ap</p>
-            <p>The hauge</p>
-            <p>the netherlend</p>
-        </div>
-        <div class="rightside">
-            <h2 class="detail-heading">Postal Address</h2>
-            <p>Riftzilla</p>
-            <p>soniq internet media</p>
-           <p>Saleh</p>
-            <p>2596Ap</p>
-            <p>The hauge</p>
-            <p>the netherlend</p>
-        </div>
-    
-    </div>
-        
-</div>
-    </div>
+     
+     
+     
+     
+     
+     
+     
+     
+<style>
+    .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    text-align: left;
+}
+
+.card {
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.2s;
+    text-align: left;
+}
+
+@media (max-width: 600px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+.solution{
+    margin: 0 auto;
+    max-width: 70%;
+    text-align: left;
+}
+.flex-headings{
+    text-align: left;
+}
+.support-ticket-btn{
+    background-color:navy;
+    padding: 10px 100px;
+    color: #fff;
+    border-radius: 10px;
+}
+</style>     
+     
+     
+     <section class="solution">
+     
+            <div class="container">
+                <div class="card">
+                    <h2 class="flex-headings">Postal Address</h2>
+                    <p>Codestar</p>
+                    <p>Soniq Internet Media</p>
+                    <p>Josef 14</p>
+                    <p>2596 Ap</p>
+                    <p>The Hague</p>
+                    <p>The Netherlands</p>
+                    <p>Chamber of Commerce (KVK) nr: 27343655</p>
+
+                </div>
+                <div class="card">
+                    <h2 class="flex-headings">Support Email</h2>
+                    <a href="mailto:support@example.com">support@example.com</a>
+               
+                </div>
+                <div class="card">
+                    <h2 class="flex-headings">Telephone</h2>
+                    <p>+31245695969</p> <!-- Corrected phone number format -->
+            
+                </div>
+                <div class="card">
+                    <h2 class="flex-headings">Support Ticket</h2>
+                    <p>If you have any questions, please feel free to submit a support request.</p>
+                    <p>Support is available from Monday to Friday, 9:00-18:00 CET.</p>
+                    <button class="support-ticket-btn">Submit a support ticket</button>
+               
+                </div>
+            </div>
+        </section>
+     
+     
+     
+     
+                </div>
+
+            </body>
+            </html>  
 
     <script>
         function setActiveTab(button, tab) {
